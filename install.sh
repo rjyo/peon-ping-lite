@@ -17,9 +17,14 @@ chmod +x "$INSTALL_DIR/peon.sh"
 # Only copy config if not already present (preserve user edits)
 [ ! -f "$INSTALL_DIR/config.json" ] && cp "$SCRIPT_DIR/config.json" "$INSTALL_DIR/config.json"
 
-# --- Link or copy packs ---
+# --- Install packs ---
 if [ -d "$INSTALL_DIR/packs" ]; then
   echo "Packs directory already exists, keeping it."
+elif [ -f "$SCRIPT_DIR/peon/openpeon.json" ]; then
+  # Bundled pack from release tarball
+  mkdir -p "$INSTALL_DIR/packs"
+  cp -R "$SCRIPT_DIR/peon" "$INSTALL_DIR/packs/peon"
+  echo "Installed bundled peon pack."
 elif [ -d "$HOME/.claude/hooks/peon-ping/packs" ]; then
   ln -s "$HOME/.claude/hooks/peon-ping/packs" "$INSTALL_DIR/packs"
   echo "Linked packs from peon-ping install."
