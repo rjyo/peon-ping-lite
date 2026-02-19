@@ -7,7 +7,13 @@ Stripped from [peon-ping](https://github.com/PeonPing/peon-ping) (~2,500 lines) 
 ## Install
 
 ```bash
-git clone https://github.com/PeonPing/peon-ping-lite.git
+cd /tmp && curl -L https://github.com/rjyo/peon-ping-lite/releases/latest/download/peon-ping-lite.tar.gz | tar xz && bash install.sh
+```
+
+Or clone the repo:
+
+```bash
+git clone https://github.com/rjyo/peon-ping-lite.git
 cd peon-ping-lite
 bash install.sh
 ```
